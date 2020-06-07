@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+:root {
+  --whiteWhite: #ffffff;
+  --kindaWhite: #f4f4f4;
+  --mainPurple: #6e2af6;
+  --lightPurple: #8446ff;
+  --darkPurple: #5c1bdf;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'LeagueSpartan';
+  src: local('LeagueSpartan'), url(./fonts/LeagueSpartan-Bold.otf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Light.ttf);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+#main {
+  background-color: var(--kindaWhite);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+/* NAVBAR */
+
+#nav {
+  width: 15rem;
+  background-color: var(--mainPurple);
+  color: var(--whiteWhite);
+  font-family: 'Roboto';
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+#logo {
+  font-family: 'LeagueSpartan';
+  font-size: 2rem;
+  margin: 1rem 0 1rem 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#nav a {
+  font-size: 1.5rem;
+  color: var(--whiteWhite);
+  list-style-type: none;
+  padding: 1rem;
+  border-top: 1px solid var(--lightPurple);
+}
+
+#nav a:nth-last-of-type(2) {
+  border-bottom: 1px solid var(--lightPurple);
+}
+
+#nav a:last-of-type {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--darkPurple);
+}
+
+#nav svg {
+  margin-right: 1rem;
+  font-size: 2rem;
 }
