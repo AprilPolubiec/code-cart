@@ -64,6 +64,10 @@ a:visited {
   border-top: 1px solid var(--lightPurple);
 }
 
+#nav a:hover {
+  background-color: var(--lightPurple);
+}
+
 #nav a:nth-last-of-type(2) {
   border-bottom: 1px solid var(--lightPurple);
 }
