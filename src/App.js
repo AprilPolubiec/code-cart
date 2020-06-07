@@ -13,10 +13,12 @@ function App() {
   return (
     <Router>
       <UserProvider>
-        <Switch>
-          <Route path='/' component={PrivateRoutes} />
-          <Route path='' component={PublicRoutes} />
-        </Switch>
+        <Router>
+          <Switch>
+            <Route path='/' component={PrivateRoutes} />
+            <Route path='' component={PublicRoutes} />
+          </Switch>
+        </Router>
       </UserProvider>
     </Router>
   )

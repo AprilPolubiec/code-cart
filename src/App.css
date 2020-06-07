@@ -4,6 +4,7 @@
   --mainPurple: #6e2af6;
   --lightPurple: #8446ff;
   --darkPurple: #5c1bdf;
+  --inactiveLink: #a9a9a9;
 }
 
 @font-face {
@@ -20,6 +21,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto';
 }
 
 a {
@@ -84,6 +86,46 @@ a:visited {
 /* END LANDING */
 
 /* NAVBAR */
+
+#user-photo {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 2.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+#user-menu {
+  position: absolute;
+  /* right: 0; */
+  top: 3rem;
+  right: 1rem;
+  background-color: var(--whiteWhite);
+  -webkit-box-shadow: 0px 1px 9px 0px rgba(122, 122, 122, 0.42);
+  -moz-box-shadow: 0px 1px 9px 0px rgba(122, 122, 122, 0.42);
+  box-shadow: 0px 1px 9px 0px rgba(122, 122, 122, 0.42);
+}
+
+#user-menu div {
+  padding: 1rem;
+}
+
+#user-menu div:hover {
+  cursor: pointer;
+  background-color: var(--kindaWhite);
+  color: var(--darkPurple);
+}
+
+#user-menu div:first-of-type {
+  color: var(--inactiveLink);
+}
+
+#user-menu div:first-of-type:hover {
+  cursor: unset;
+  background-color: var(--whiteWhite);
+}
 
 #nav {
   width: 15rem;

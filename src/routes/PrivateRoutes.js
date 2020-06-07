@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 //Pages
 import Home from '../pages/Home'
@@ -26,7 +26,7 @@ export default class PrivateRoutes extends Component {
             <Route exact path='/'>
               <Home />
             </Route>
-            <Route exact path='/folders'>
+            <Route path='/folders' component={Folders}>
               <Folders />
             </Route>
             <Route path='/folders/:folderid'>

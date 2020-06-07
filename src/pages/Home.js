@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { UserContext } from '../providers/UserProvider'
 
-export default class Home extends Component {
+import { withRouter } from 'react-router-dom'
+
+class Home extends Component {
   static contextType = UserContext
   render() {
     var { user, authLoaded } = this.context
@@ -13,3 +15,5 @@ export default class Home extends Component {
     )
   }
 }
+
+export default withRouter(Home)
