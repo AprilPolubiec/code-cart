@@ -17,16 +17,16 @@ function App() {
           <Route exact path='/'>
             <Home />
           </Route>
-          <Route exact path='folders'>
+          <Route exact path='/folders'>
             <Folders />
           </Route>
-          <Route path='folders/:folderid'>
+          <Route path='/folders/:folderid'>
             <Folder />
           </Route>
-          <Route path='add-item'>
+          <Route path='/add-item'>
             <AddItem />
           </Route>
-          <Route path='profile'>
+          <Route path='/profile'>
             <Profile />
           </Route>
         </Switch>

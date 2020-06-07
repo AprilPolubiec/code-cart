@@ -10,17 +10,17 @@ export default class Navbar extends Component {
       <div id='nav'>
         <div id='logo'>codecart.</div>
 
-        <Link to='Home'>
+        <Link to='/'>
           <FontAwesomeIcon icon={faHome} />
           Dashboard
         </Link>
 
-        <Link to='Folders'>
+        <Link to='/folders'>
           <FontAwesomeIcon icon={faFolder} />
           Folders
         </Link>
 
-        <Link to='AddItem'>
+        <Link to='/add-item'>
           <FontAwesomeIcon icon={faPlus} />
           ADD TO CART
         </Link>
