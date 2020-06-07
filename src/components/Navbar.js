@@ -7,7 +7,21 @@ import { faHome, faFolder, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { UserContext } from '../providers/UserProvider'
 
 export default class Navbar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      menuOpen: false,
+    }
+  }
   static contextType = UserContext
+
+  handleIconClick = () => {
+    this.setState({ menuOpen: !this.state.menuOpen })
+  }
+  handleSignOut = () => {
+    var {handleSignOut} = this.context
+    handleSignOut()
+  }
   render() {
     var { user } = this.context
     return (
@@ -31,12 +45,22 @@ export default class Navbar extends Component {
           </Link>
         </div>
         <div id='top-nav'>
-          <img id='user-photo' src={user.photoURL}></img>
+          <img
+            id='user-photo'
+            src={user.photoURL}
+            alt='profile-pic'
+            onClick={this.handleIconClick}
+            className={this.state.menuOpen ? 'selected' : ''}
+          ></img>
         </div>
-        <div id='user-menu'>
-          <div>{user.email}</div>
-          <div>Sign Out</div>
-        </div>
+        {this.state.menuOpen ? (
+          <div id='user-menu'>
+            <div>{user.email}</div>
+            <div onClick={this.handleSignOut}>Sign Out</div>
+          </div>
+        ) : (
+          <></>
+        )}
       </>
     )
   }

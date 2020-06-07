@@ -7,8 +7,6 @@ export default class PublicRoutes extends Component {
   static contextType = UserContext
 
   render() {
-    console.log('PublicRoutes()')
-
     var { user } = this.context
     if (user) {
       return <Redirect to='/' />

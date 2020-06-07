@@ -22,9 +22,9 @@ export const db = firebase.firestore()
 export const functions = firebase.functions()
 export const auth = firebase.auth()
 
-var ui = new firebaseui.auth.AuthUI(auth)
+export const ui = new firebaseui.auth.AuthUI(auth)
 
-var uiConfig = {
+export const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult, redirectUrl) {
       var { email, name, picture } = authResult.additionalUserInfo.profile
@@ -46,8 +46,6 @@ var uiConfig = {
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
   ],
 }
-
-ui.start('#firebaseui-auth-container', uiConfig)
 
 if (process.env.NODE_ENV === 'development') {
   if (document.location.hostname === 'localhost') {
