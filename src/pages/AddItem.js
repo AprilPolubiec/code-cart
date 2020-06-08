@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import { UserContext } from '../providers/UserProvider'
+import { db } from '../firebase'
+
 export default class AddItem extends Component {
   constructor(props) {
     super(props)
@@ -12,6 +15,8 @@ export default class AddItem extends Component {
     }
   }
 
+  static contextType = UserContext
+
   getPageTitle = () => {
     fetch(`http://textance.herokuapp.com/title/${this.state.url}`)
       .then((data) => {
@@ -22,6 +27,17 @@ export default class AddItem extends Component {
       })
   }
 
+  handleSubmit = () => {
+    var { userDoc } = this.context
+    var { folder, name, url, status, notes } = this.state
+    userDoc
+      .collection('folders')
+      .doc(folder)
+      .collection('projects')
+      .doc(name)
+      .set({ name, url, status, notes })
+  }
+
   handleChange = (e) => {
     var { name, value } = e.target
     this.setState({
@@ -30,6 +46,7 @@ export default class AddItem extends Component {
   }
 
   render() {
+    var { folders } = this.context
     return (
       <div id='contents'>
         <div className='container'>
@@ -57,11 +74,22 @@ export default class AddItem extends Component {
             <label>
               Folder
               <select id='folders' name='folders' onChange={this.handleChange}>
-                <option value='volvo'>Volvo</option>
-                <option value='saab'>Saab</option>
-                <option value='fiat'>Fiat</option>
-                <option value='audi'>Audi</option>
+                {folders.map((folder) => (
+                  <option value={folder.id}>{folder.id}</option>
+                ))}
+                <option value='new-folder'>Add new folder</option>
               </select>
+              {folders.length === 0 || this.state.folder === 'new-folder' ? (
+                <>Add new</>
+              ) : (
+                <></>
+              )}
+              {/* TODO: customer dropdown */}
+              {/* <Dropdown
+                title='Select a folder'
+                items={folders}
+                onChange={this.handleChange}
+              /> */}
             </label>
             <label>
               Status
@@ -80,7 +108,9 @@ export default class AddItem extends Component {
                 onChange={this.handleChange}
               ></textarea>
             </label>
-            <button type='button'>Add to Cart</button>
+            <button type='button' onClick={this.handleSubmit}>
+              Add to Cart
+            </button>
           </form>
         </div>
       </div>
